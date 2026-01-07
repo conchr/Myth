@@ -27,193 +27,203 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            padding: 1rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            padding: 0;
+            margin: 0;
             width: 100%;
+            height: 100%;
         }
         
         header {
             text-align: center;
-            padding: 1rem 0;
-            margin-bottom: 1rem;
+            padding: clamp(1rem, 3vh, 2rem) 1rem;
+            background: rgba(20, 40, 70, 0.9);
+            flex-shrink: 0;
         }
         
         h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(1.8rem, 5vw, 3rem);
             color: #e6b422;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             letter-spacing: 1px;
         }
         
-        .myths-grid {
+        .buttons-container {
             flex: 1;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            padding: 0.5rem;
-            align-content: center;
-        }
-        
-        .myth-card {
-            background: rgba(30, 50, 80, 0.8);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(230, 180, 34, 0.2);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            min-height: 180px;
-            height: 100%;
+            padding: 1rem;
+            gap: 1rem;
+            justify-content: center;
+            align-items: stretch;
+            overflow: hidden;
         }
         
-        .myth-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-            border-color: rgba(230, 180, 34, 0.5);
-        }
-        
-        .card-header {
-            padding: 1.5rem 1rem;
-            text-align: center;
-            background: rgba(20, 40, 70, 0.9);
-            border-radius: 12px 12px 0 0;
-        }
-        
-        .card-header h2 {
-            font-size: clamp(1.3rem, 3vw, 1.8rem);
-            color: #f5f5f5;
-        }
-        
-        .card-content {
-            padding: 1.5rem 1rem;
+        .myth-button {
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex: 1;
-        }
-        
-        .btn {
-            display: inline-block;
-            text-align: center;
-            padding: 0.9rem 1.8rem;
-            background: linear-gradient(to right, #c19b2d, #e6b422);
-            color: #0c1a2a;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: clamp(1rem, 2vw, 1.1rem);
+            background: rgba(30, 50, 80, 0.9);
+            border-radius: 12px;
             transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(230, 180, 34, 0.3);
+            text-decoration: none;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 0 1rem;
+            position: relative;
+            overflow: hidden;
         }
         
-        .btn:hover {
-            background: linear-gradient(to right, #d4af37, #f0c750);
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(230, 180, 34, 0.4);
+        .myth-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            border-color: rgba(230, 180, 34, 0.7);
+            background: rgba(40, 60, 90, 0.95);
+        }
+        
+        .myth-button:active {
+            transform: translateY(0);
+            transition: transform 0.1s;
+        }
+        
+        .button-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            padding: 1rem 0;
+        }
+        
+        .myth-title {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        
+        .quiz-text {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: #e6b422;
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            background: rgba(230, 180, 34, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(230, 180, 34, 0.3);
         }
         
         /* Landscape optimization */
-        @media (orientation: landscape) and (max-height: 600px) {
-            .container {
-                padding: 0.5rem;
-            }
-            
-            .myths-grid {
-                gap: 1rem;
-                padding: 0.2rem;
-            }
-            
-            .myth-card {
-                min-height: 150px;
-            }
-            
-            .card-header {
-                padding: 1rem 0.5rem;
-            }
-            
-            .card-content {
-                padding: 1rem 0.5rem;
-            }
-            
-            .btn {
-                padding: 0.7rem 1.4rem;
-                min-width: 140px;
-            }
-        }
-        
-        /* Portrait optimization */
-        @media (orientation: portrait) {
-            .myths-grid {
-                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        @media (orientation: landscape) {
+            .buttons-container {
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 1rem;
                 gap: 1rem;
             }
             
-            .myth-card {
-                min-height: 160px;
+            .myth-button {
+                flex: 1 0 calc(50% - 0.5rem);
+                min-height: 40%;
             }
             
-            .card-header {
-                padding: 1.2rem 0.5rem;
-            }
-        }
-        
-        /* Small screens */
-        @media (max-width: 600px) {
-            .container {
-                padding: 0.8rem;
-            }
-            
-            .myths-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-                max-width: 400px;
-                margin: 0 auto;
-                width: 100%;
+            header {
+                padding: 0.8rem 1rem;
             }
             
             h1 {
-                font-size: 2rem;
+                font-size: clamp(1.5rem, 4vw, 2.5rem);
+            }
+        }
+        
+        /* Small screens portrait */
+        @media (max-width: 600px) and (orientation: portrait) {
+            .buttons-container {
+                padding: 0.8rem;
+                gap: 0.8rem;
             }
             
-            .btn {
-                width: 180px;
-                padding: 0.8rem 1.5rem;
+            .myth-title {
+                font-size: 1.4rem;
+            }
+            
+            .quiz-text {
+                font-size: 1.1rem;
+                padding: 0.4rem 1.2rem;
             }
         }
         
         /* Very small screens */
-        @media (max-width: 400px) {
-            .container {
-                padding: 0.5rem;
-            }
-            
+        @media (max-width: 400px) and (orientation: portrait) {
             h1 {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
             }
             
-            .card-header h2 {
-                font-size: 1.4rem;
+            .buttons-container {
+                padding: 0.6rem;
+                gap: 0.6rem;
             }
             
-            .btn {
-                min-width: 140px;
-                padding: 0.7rem 1.2rem;
+            .myth-title {
+                font-size: 1.3rem;
+            }
+            
+            .quiz-text {
+                font-size: 1rem;
+                padding: 0.3rem 1rem;
             }
         }
         
         /* Tall screens */
-        @media (min-height: 800px) {
-            .myths-grid {
-                gap: 2rem;
+        @media (min-height: 800px) and (orientation: portrait) {
+            .buttons-container {
+                padding: 1.5rem;
+                gap: 1.5rem;
             }
             
-            .myth-card {
-                min-height: 200px;
+            .myth-title {
+                font-size: 2rem;
             }
+            
+            .quiz-text {
+                font-size: 1.4rem;
+                padding: 0.7rem 2rem;
+            }
+        }
+        
+        /* Short screens landscape */
+        @media (orientation: landscape) and (max-height: 500px) {
+            header {
+                padding: 0.5rem 1rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .buttons-container {
+                padding: 0.5rem;
+                gap: 0.5rem;
+            }
+            
+            .myth-title {
+                font-size: 1.2rem;
+                margin-bottom: 0.2rem;
+            }
+            
+            .quiz-text {
+                font-size: 0.9rem;
+                padding: 0.2rem 0.8rem;
+            }
+        }
+        
+        /* Animation for click effect */
+        @keyframes buttonClick {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.98); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
@@ -223,91 +233,84 @@
             <h1>Οι Μύθοι των Φαρσάλων</h1>
         </header>
         
-        <main>
-            <div class="myths-grid">
-                <!-- Κάρτα 1: Ο Μύθος της Θέτιδας -->
-                <div class="myth-card">
-                    <div class="card-header">
-                        <h2>Ο Μύθος της Θέτιδας</h2>
-                    </div>
-                    <div class="card-content">
-                        <a href="https://conchr.github.io/Thetis-Myth/" class="btn">Κάνε το Κουίζ</a>
-                    </div>
+        <div class="buttons-container">
+            <!-- Κουμπί 1: Ο Μύθος της Θέτιδας -->
+            <a href="https://conchr.github.io/Thetis-Myth/" class="myth-button">
+                <div class="button-content">
+                    <div class="myth-title">Ο Μύθος της Θέτιδας</div>
+                    <div class="quiz-text">Κάνε το Κουίζ</div>
                 </div>
-                
-                <!-- Κάρτα 2: Ο Μύθος των Μυρμιδόνων -->
-                <div class="myth-card">
-                    <div class="card-header">
-                        <h2>Ο Μύθος των Μυρμιδόνων</h2>
-                    </div>
-                    <div class="card-content">
-                        <a href="https://conchr.github.io/Mirmidones-Myth/" class="btn">Κάνε το Κουίζ</a>
-                    </div>
+            </a>
+            
+            <!-- Κουμπί 2: Ο Μύθος των Μυρμιδόνων -->
+            <a href="https://conchr.github.io/Mirmidones-Myth/" class="myth-button">
+                <div class="button-content">
+                    <div class="myth-title">Ο Μύθος των Μυρμιδόνων</div>
+                    <div class="quiz-text">Κάνε το Κουίζ</div>
                 </div>
-                
-                <!-- Κάρτα 3: Ο Μύθος της Φθίας -->
-                <div class="myth-card">
-                    <div class="card-header">
-                        <h2>Ο Μύθος της Φθίας</h2>
-                    </div>
-                    <div class="card-content">
-                        <a href="https://conchr.github.io/Fthia-Myth/" class="btn">Κάνε το Κουίζ</a>
-                    </div>
+            </a>
+            
+            <!-- Κουμπί 3: Ο Μύθος της Φθίας -->
+            <a href="https://conchr.github.io/Fthia-Myth/" class="myth-button">
+                <div class="button-content">
+                    <div class="myth-title">Ο Μύθος της Φθίας</div>
+                    <div class="quiz-text">Κάνε το Κουίζ</div>
                 </div>
-                
-                <!-- Κάρτα 4: Ο Μύθος του Αχιλλέα -->
-                <div class="myth-card">
-                    <div class="card-header">
-                        <h2>Ο Μύθος του Αχιλλέα</h2>
-                    </div>
-                    <div class="card-content">
-                        <a href="https://conchr.github.io/Achilles-Myth/" class="btn">Κάνε το Κουίζ</a>
-                    </div>
+            </a>
+            
+            <!-- Κουμπί 4: Ο Μύθος του Αχιλλέα -->
+            <a href="https://conchr.github.io/Achilles-Myth/" class="myth-button">
+                <div class="button-content">
+                    <div class="myth-title">Ο Μύθος του Αχιλλέα</div>
+                    <div class="quiz-text">Κάνε το Κουίζ</div>
                 </div>
-            </div>
-        </main>
+            </a>
+        </div>
     </div>
 
     <script>
-        // Προσθήκη μικρών εφέ αλληλεπίδρασης
         document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('.btn');
+            const buttons = document.querySelectorAll('.myth-button');
             
             buttons.forEach(button => {
+                // Προσθήκη εφέ hover
                 button.addEventListener('mouseenter', function() {
-                    this.style.transform = 'scale(1.05)';
+                    this.style.transform = 'translateY(-5px)';
                 });
                 
                 button.addEventListener('mouseleave', function() {
-                    this.style.transform = 'scale(1)';
+                    this.style.transform = 'translateY(0)';
                 });
                 
-                // Κλείσιμο σελίδας μετά το κουίζ
-                button.addEventListener('click', function(e) {
-                    // Προσθήκη μικρής καθυστέρησης για να φαίνεται το animation
-                    setTimeout(() => {
-                        console.log('Μετάβαση στο κουίζ...');
-                    }, 200);
+                // Προσθήκη εφέ κλικ
+                button.addEventListener('mousedown', function() {
+                    this.style.animation = 'buttonClick 0.2s';
+                });
+                
+                button.addEventListener('mouseup', function() {
+                    this.style.animation = '';
+                });
+                
+                // Για touch devices
+                button.addEventListener('touchstart', function() {
+                    this.style.animation = 'buttonClick 0.2s';
+                });
+                
+                button.addEventListener('touchend', function() {
+                    this.style.animation = '';
                 });
             });
             
-            // Προσθήκη εφέ για τις κάρτες
-            const cards = document.querySelectorAll('.myth-card');
+            // Βελτιστοποίηση για mobile
+            document.addEventListener('touchstart', function() {}, {passive: true});
             
-            cards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    if (!e.target.classList.contains('btn')) {
-                        const link = this.querySelector('.btn');
-                        if (link) {
-                            link.click();
-                        }
-                    }
-                });
+            // Αποτροπή διπλού κλικ για zoom
+            document.addEventListener('dblclick', function(e) {
+                if (e.target.closest('.myth-button')) {
+                    e.preventDefault();
+                }
             });
         });
-        
-        // Βελτιστοποίηση για mobile devices
-        document.addEventListener('touchstart', function() {}, {passive: true});
     </script>
 </body>
 </html>
